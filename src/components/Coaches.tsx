@@ -44,7 +44,6 @@ const CLOSE_SLIDE_AT_MS = 85;
 
 const COACH_ORDER = [
   "marykay",
-  "ryan-y",
   "jason",
   "julia",
   "arturo",
@@ -124,17 +123,6 @@ She fell in love with CrossFit because of what it builds from the inside out: co
 Kathleen coaches with the mindset that fitness should support you through every stage of life — whether you're brand new, rebuilding, pregnant, postpartum, career-focused, or chasing big goals. She's approachable, encouraging, and practical, meeting you where you are while helping you grow.
 Outside the gym, she's a financial planner, a mom, and someone who's always chasing growth — in strength, career, and life. She loves traveling with her family, baking, reading, and cheering the loudest during workouts.
 Her mission: help you see what you're capable of — and then go beyond it.`,
-  },
-  {
-    id: "ryan-y",
-    name: "Ryan",
-    imagePink: "/coaches/ryan-y-pink.png",
-    imageNormal: "/coaches/ryan-y.png",
-    bio: `My CrossFit career started after I finished playing college tennis. I needed a competitive outlet, and one of my friends convinced me to try out a class. I was instantly hooked!
-
-Before I started coaching CrossFit, I was a Strength and Conditioning Coach while in grad school at Mississippi State University. After a couple of years in the collegiate field, I took a position as a full-time CrossFit coach because I love the community aspect so much. That was back in 2016, and I haven't looked back since!
-
-I have my CSCS through the NSCA. I also have my CF-L2, and am a L1 Coach through USAW. I specialize in Olympic weightlifting, but I love all things barbell!`,
   },
   {
     id: "victoria",
