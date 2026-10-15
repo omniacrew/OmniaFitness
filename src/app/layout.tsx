@@ -6,6 +6,8 @@ import "./globals.css";
 import { BookingProvider } from "@/context/BookingContext";
 import { NewsletterBannerProvider } from "@/context/NewsletterBannerContext";
 import { WelcomeModalProvider } from "@/context/WelcomeModalContext";
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/shop/CartDrawer";
 import BookingModal from "@/components/BookingModal";
 import SmoothScroll from "@/components/SmoothScroll";
 import WelcomeModal from "@/components/WelcomeModal";
@@ -136,6 +138,7 @@ gtag('config', 'AW-18229379592');`,
           strategy="afterInteractive"
         />
         <BookingProvider>
+          <CartProvider>
           <WelcomeModalProvider>
             <VariableProximityRoot>
               <NewsletterBannerProvider>
@@ -144,9 +147,11 @@ gtag('config', 'AW-18229379592');`,
                   <WelcomeModal />
                 </Suspense>
                 <BookingModal />
+                <CartDrawer />
               </NewsletterBannerProvider>
             </VariableProximityRoot>
           </WelcomeModalProvider>
+          </CartProvider>
         </BookingProvider>
         </SmoothScroll>
       </body>

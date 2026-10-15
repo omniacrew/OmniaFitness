@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useBooking } from "@/context/BookingContext";
 import { NEWSLETTER_LAYOUT, useNewsletterBanner } from "@/context/NewsletterBannerContext";
 import Proximate from "@/components/variable-proximity/Proximate";
+import CartButton from "@/components/shop/CartButton";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const bookIntroBtnClass =
@@ -34,6 +35,7 @@ export default function BlendNav() {
 
   return (
     <>
+      <CartButton />
       {/* Desktop Nav - Fixed top left */}
       <div
         className="hidden md:flex fixed items-center gap-3"
@@ -69,14 +71,12 @@ export default function BlendNav() {
             >
               <Proximate>[blog]</Proximate>
             </Link>
-            <a
-              href="https://omnia-fitness-collective.myshopify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/shop"
               className="text-base font-mono tracking-wide text-white transition-colors duration-300 hover:text-pink-primary"
             >
               <Proximate>[shop]</Proximate>
-            </a>
+            </Link>
           </div>
         )}
         {!hideBookIntro ? (
@@ -117,14 +117,12 @@ export default function BlendNav() {
             >
               <Proximate>[blog]</Proximate>
             </Link>
-            <a
-              href="https://omnia-fitness-collective.myshopify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/shop"
               className="mix-blend-difference text-base font-mono tracking-wide text-white transition-opacity duration-300 hover:opacity-70"
             >
               <Proximate>[shop]</Proximate>
-            </a>
+            </Link>
           </div>
         )}
         {!hideBookIntro ? (

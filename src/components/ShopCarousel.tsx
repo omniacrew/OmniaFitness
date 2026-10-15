@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import Proximate from "@/components/variable-proximity/Proximate";
 import StaggerList from "./StaggerList";
@@ -52,11 +53,9 @@ export default function ShopCarousel({ products }: { products: ShopProduct[] }) 
       >
         <StaggerList as="div" className="flex gap-4 md:gap-8" staggerMs={36} durationMs={340}>
         {products.map((product) => (
-          <a
+          <Link
             key={product.id}
             href={product.url}
-            target="_blank"
-            rel="noopener noreferrer"
             className="card-lift-hover flex-shrink-0 w-[200px] md:w-[280px] group cursor-pointer rounded-sm"
           >
             {/* Badge - Above image */}
@@ -85,7 +84,7 @@ export default function ShopCarousel({ products }: { products: ShopProduct[] }) 
             <p className="text-black/60 text-sm font-mono">
               <Proximate>{product.availableForSale ? product.price : "sold out"}</Proximate>
             </p>
-          </a>
+          </Link>
         ))}
         </StaggerList>
       </div>
