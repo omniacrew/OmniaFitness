@@ -21,7 +21,8 @@ export default function BlendNav() {
     ? NEWSLETTER_LAYOUT.navTop.withBanner
     : NEWSLETTER_LAYOUT.navTop.withoutBanner;
   const hideBookIntro = pathname.startsWith("/policies");
-  const isBlog = pathname.startsWith("/blog");
+  // White-background pages use plain black links instead of the blended ones.
+  const isBlog = pathname.startsWith("/blog") || pathname.startsWith("/shop");
 
   const handleAboutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/") return;
