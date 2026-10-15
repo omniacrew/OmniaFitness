@@ -66,7 +66,7 @@ export default function ShopCarousel({ products }: { products: ShopProduct[] }) 
               </span>
             </div>
             {/* Product Image */}
-            <div className="relative aspect-square w-full mb-3 overflow-hidden bg-black">
+            <div className="relative aspect-square w-full mb-3 overflow-hidden bg-[#f2f2f2]">
               {product.image && (
                 <Image
                   src={product.image.url}
