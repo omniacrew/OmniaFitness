@@ -21,8 +21,10 @@ export default function BlendNav() {
     ? NEWSLETTER_LAYOUT.navTop.withBanner
     : NEWSLETTER_LAYOUT.navTop.withoutBanner;
   const hideBookIntro = pathname.startsWith("/policies");
-  // White-background pages use plain black links instead of the blended ones.
-  const isBlog = pathname.startsWith("/blog") || pathname.startsWith("/shop");
+  const isBlog = pathname.startsWith("/blog");
+  // Shop pages are plain white, where the blended white links disappear — use solid black there.
+  const isShop = pathname.startsWith("/shop");
+  const linkColor = isShop ? "text-black" : "text-white";
 
   const handleAboutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/") return;
@@ -57,24 +59,24 @@ export default function BlendNav() {
         ) : (
           <div
             className="flex items-center gap-3"
-            style={{ mixBlendMode: "difference" }}
+            style={isShop ? undefined : { mixBlendMode: "difference" }}
           >
             <Link
               href="/#why-omnia"
               onClick={handleAboutClick}
-              className="text-base font-mono tracking-wide text-white transition-colors duration-300 hover:text-pink-primary"
+              className={`text-base font-mono tracking-wide ${linkColor} transition-colors duration-300 hover:text-pink-primary`}
             >
               <Proximate>[about]</Proximate>
             </Link>
             <Link
               href="/blog"
-              className="text-base font-mono tracking-wide text-white transition-colors duration-300 hover:text-pink-primary"
+              className={`text-base font-mono tracking-wide ${linkColor} transition-colors duration-300 hover:text-pink-primary`}
             >
               <Proximate>[blog]</Proximate>
             </Link>
             <Link
               href="/shop"
-              className="text-base font-mono tracking-wide text-white transition-colors duration-300 hover:text-pink-primary"
+              className={`text-base font-mono tracking-wide ${linkColor} transition-colors duration-300 hover:text-pink-primary`}
             >
               <Proximate>[shop]</Proximate>
             </Link>
@@ -108,19 +110,19 @@ export default function BlendNav() {
             <Link
               href="/#why-omnia"
               onClick={handleAboutClick}
-              className="mix-blend-difference text-base font-mono tracking-wide text-white transition-opacity duration-300 hover:opacity-70"
+              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[about]</Proximate>
             </Link>
             <Link
               href="/blog"
-              className="mix-blend-difference text-base font-mono tracking-wide text-white transition-opacity duration-300 hover:opacity-70"
+              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[blog]</Proximate>
             </Link>
             <Link
               href="/shop"
-              className="mix-blend-difference text-base font-mono tracking-wide text-white transition-opacity duration-300 hover:opacity-70"
+              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[shop]</Proximate>
             </Link>
