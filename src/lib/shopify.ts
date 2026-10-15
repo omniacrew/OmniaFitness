@@ -6,6 +6,11 @@ const STORE_DOMAIN =
   process.env.SHOPIFY_STORE_DOMAIN || "omnia-fitness-collective.myshopify.com";
 const API_VERSION = process.env.SHOPIFY_API_VERSION || "2026-04";
 const REVALIDATE_SECONDS = 300; // refresh product list every 5 minutes
+// Shopify collection that controls which products show in the banner and in
+// what order (drag to reorder in Shopify admin). Falls back to all products,
+// newest-edited first, if the collection is missing or empty.
+const BANNER_COLLECTION =
+  process.env.SHOPIFY_BANNER_COLLECTION || "homepage-banner";
 
 export const SHOP_URL = `https://${STORE_DOMAIN}`;
 
@@ -20,18 +25,24 @@ export type ShopProduct = {
 };
 
 const QUERY = /* GraphQL */ `
-  query ShopBanner($first: Int!) {
-    products(first: $first, sortKey: UPDATED_AT, reverse: true) {
-      nodes {
-        id
-        handle
-        title
-        productType
-        availableForSale
-        onlineStoreUrl
-        featuredImage { url altText }
-        priceRange { minVariantPrice { amount currencyCode } }
+  fragment BannerProduct on Product {
+    id
+    handle
+    title
+    productType
+    availableForSale
+    onlineStoreUrl
+    featuredImage { url altText }
+    priceRange { minVariantPrice { amount currencyCode } }
+  }
+  query ShopBanner($first: Int!, $handle: String!) {
+    collection(handle: $handle) {
+      products(first: $first, sortKey: COLLECTION_DEFAULT) {
+        nodes { ...BannerProduct }
       }
+    }
+    products(first: $first, sortKey: UPDATED_AT, reverse: true) {
+      nodes { ...BannerProduct }
     }
   }
 `;
@@ -74,7 +85,10 @@ export async function getShopProducts(first = 20): Promise<ShopProduct[]> {
           "Content-Type": "application/json",
           "X-Shopify-Storefront-Access-Token": token,
         },
-        body: JSON.stringify({ query: QUERY, variables: { first } }),
+        body: JSON.stringify({
+          query: QUERY,
+          variables: { first, handle: BANNER_COLLECTION },
+        }),
         next: { revalidate: REVALIDATE_SECONDS },
       }
     );
@@ -87,7 +101,11 @@ export async function getShopProducts(first = 20): Promise<ShopProduct[]> {
       console.error("[shopify] Storefront API errors", json.errors);
       return [];
     }
-    const nodes: RawProduct[] = json.data?.products?.nodes ?? [];
+    const fromCollection: RawProduct[] =
+      json.data?.collection?.products?.nodes ?? [];
+    const nodes: RawProduct[] = fromCollection.length
+      ? fromCollection
+      : json.data?.products?.nodes ?? [];
     return nodes.map((p) => ({
       id: p.id,
       title: p.title,
