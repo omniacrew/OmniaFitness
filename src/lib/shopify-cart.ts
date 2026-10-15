@@ -17,7 +17,6 @@ export type CartLine = {
   unitPrice: string;
   lineTotal: string;
   availableForSale: boolean;
-  quantityAvailable: number | null;
 };
 
 export type Cart = {
@@ -47,7 +46,6 @@ const CART_FIELDS = /* GraphQL */ `
             id
             title
             availableForSale
-            quantityAvailable
             image { url }
             product { title handle featuredImage { url } }
           }
@@ -72,7 +70,6 @@ type RawCart = {
         id: string;
         title: string;
         availableForSale: boolean;
-        quantityAvailable: number | null;
         image: { url: string } | null;
         product: { title: string; handle: string; featuredImage: { url: string } | null };
       };
@@ -103,7 +100,6 @@ function normalize(c: RawCart): Cart {
       ),
       lineTotal: formatPrice(l.cost.totalAmount.amount, l.cost.totalAmount.currencyCode),
       availableForSale: l.merchandise.availableForSale,
-      quantityAvailable: l.merchandise.quantityAvailable,
     })),
   };
 }

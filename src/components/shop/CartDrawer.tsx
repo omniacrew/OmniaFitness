@@ -69,8 +69,6 @@ export default function CartDrawer() {
           ) : (
             <ul className="divide-y divide-black/10">
               {lines.map((line) => {
-                const atMax =
-                  line.quantityAvailable != null && line.quantity >= line.quantityAvailable;
                 return (
                   <li key={line.id} className="flex gap-4 py-4">
                     <Link
@@ -113,7 +111,7 @@ export default function CartDrawer() {
                           <span className="w-8 text-center text-sm">{line.quantity}</span>
                           <button
                             onClick={() => updateItem(line.id, line.quantity + 1)}
-                            disabled={busy || atMax}
+                            disabled={busy}
                             className="h-8 w-8 text-sm hover:bg-black/5 disabled:opacity-40"
                             aria-label={`Add one ${line.productTitle}`}
                           >
