@@ -106,7 +106,11 @@ export default function BlendNav() {
             <Proximate>[home]</Proximate>
           </Link>
         ) : (
-          <div className="flex items-center gap-3">
+          <div
+            className={`flex items-center gap-3 ${
+              isShop ? "rounded-lg bg-white/90 px-3 py-2 shadow-sm backdrop-blur" : ""
+            }`}
+          >
             <Link
               href="/#why-omnia"
               onClick={handleAboutClick}
