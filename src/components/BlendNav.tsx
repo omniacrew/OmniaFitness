@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useBooking } from "@/context/BookingContext";
 import { NEWSLETTER_LAYOUT, useNewsletterBanner } from "@/context/NewsletterBannerContext";
 import Proximate from "@/components/variable-proximity/Proximate";
+import CartButton from "@/components/shop/CartButton";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const bookIntroBtnClass =
@@ -21,6 +22,9 @@ export default function BlendNav() {
     : NEWSLETTER_LAYOUT.navTop.withoutBanner;
   const hideBookIntro = pathname.startsWith("/policies");
   const isBlog = pathname.startsWith("/blog");
+  // Shop pages are plain white, where the blended white links disappear — use solid black there.
+  const isShop = pathname.startsWith("/shop");
+  const linkColor = isShop ? "text-black" : "text-white";
 
   const handleAboutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/") return;
@@ -34,6 +38,7 @@ export default function BlendNav() {
 
   return (
     <>
+      <CartButton />
       {/* Desktop Nav - Fixed top left */}
       <div
         className="hidden md:flex fixed items-center gap-3"
@@ -54,29 +59,27 @@ export default function BlendNav() {
         ) : (
           <div
             className="flex items-center gap-3"
-            style={{ mixBlendMode: "difference" }}
+            style={isShop ? undefined : { mixBlendMode: "difference" }}
           >
             <Link
               href="/#why-omnia"
               onClick={handleAboutClick}
-              className="text-base font-mono tracking-wide text-white transition-colors duration-300 hover:text-pink-primary"
+              className={`text-base font-mono tracking-wide ${linkColor} transition-colors duration-300 hover:text-pink-primary`}
             >
               <Proximate>[about]</Proximate>
             </Link>
             <Link
               href="/blog"
-              className="text-base font-mono tracking-wide text-white transition-colors duration-300 hover:text-pink-primary"
+              className={`text-base font-mono tracking-wide ${linkColor} transition-colors duration-300 hover:text-pink-primary`}
             >
               <Proximate>[blog]</Proximate>
             </Link>
-            <a
-              href="https://omnia-fitness-collective.myshopify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-base font-mono tracking-wide text-white transition-colors duration-300 hover:text-pink-primary"
+            <Link
+              href="/shop"
+              className={`text-base font-mono tracking-wide ${linkColor} transition-colors duration-300 hover:text-pink-primary`}
             >
               <Proximate>[shop]</Proximate>
-            </a>
+            </Link>
           </div>
         )}
         {!hideBookIntro ? (
@@ -103,28 +106,30 @@ export default function BlendNav() {
             <Proximate>[home]</Proximate>
           </Link>
         ) : (
-          <div className="flex items-center gap-3">
+          <div
+            className={`flex items-center gap-3 ${
+              isShop ? "!gap-2 rounded-lg bg-white/90 px-2 py-2 shadow-sm backdrop-blur" : ""
+            }`}
+          >
             <Link
               href="/#why-omnia"
               onClick={handleAboutClick}
-              className="mix-blend-difference text-base font-mono tracking-wide text-white transition-opacity duration-300 hover:opacity-70"
+              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[about]</Proximate>
             </Link>
             <Link
               href="/blog"
-              className="mix-blend-difference text-base font-mono tracking-wide text-white transition-opacity duration-300 hover:opacity-70"
+              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[blog]</Proximate>
             </Link>
-            <a
-              href="https://omnia-fitness-collective.myshopify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mix-blend-difference text-base font-mono tracking-wide text-white transition-opacity duration-300 hover:opacity-70"
+            <Link
+              href="/shop"
+              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[shop]</Proximate>
-            </a>
+            </Link>
           </div>
         )}
         {!hideBookIntro ? (
