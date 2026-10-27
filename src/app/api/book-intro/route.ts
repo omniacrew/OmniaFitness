@@ -4,6 +4,11 @@ import {
   syncIntroLeadToKlaviyo,
 } from "@/lib/klaviyo-book-intro";
 import { isValidContactInterest } from "@/lib/contact-interest-options";
+import {
+  WELCOME_BACK_INTEREST,
+  WELCOME_BACK_SOURCE,
+  isValidLastTrained,
+} from "@/lib/welcome-back-options";
 
 const MAX_LEN = 200;
 const NOTES_MAX = 2500;
@@ -40,10 +45,19 @@ export async function POST(request: Request) {
     );
   }
 
-  const { firstName, lastName, email, phone, interest, notes } = body as Record<
-    string,
-    unknown
-  >;
+  const { firstName, lastName, email, phone, interest, notes, source, lastTrained } =
+    body as Record<string, unknown>;
+
+  const isWelcomeBack = source === WELCOME_BACK_SOURCE;
+  if (
+    isWelcomeBack &&
+    (!isNonEmptyString(lastTrained) || !isValidLastTrained(lastTrained.trim()))
+  ) {
+    return NextResponse.json(
+      { ok: false, error: "Please tell us when you last trained with us." },
+      { status: 400 },
+    );
+  }
 
   if (!isNonEmptyString(firstName) || firstName.trim().length > MAX_LEN) {
     return NextResponse.json(
@@ -77,7 +91,14 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!isNonEmptyString(interest) || !isValidContactInterest(interest.trim())) {
+  // Welcome-back leads always route to the "Coming back to Omnia" flow,
+  // whatever the client sent.
+  const interestValue = isWelcomeBack
+    ? WELCOME_BACK_INTEREST
+    : isNonEmptyString(interest)
+      ? interest.trim()
+      : "";
+  if (!isWelcomeBack && !isValidContactInterest(interestValue)) {
     return NextResponse.json(
       { ok: false, error: "Please choose what you are interested in." },
       { status: 400 },
@@ -114,8 +135,14 @@ export async function POST(request: Request) {
   }
 
   const properties: Record<string, string> = {
-    omnia_interest: interest.trim(),
+    omnia_interest: interestValue,
+    omnia_source: isWelcomeBack ? WELCOME_BACK_SOURCE : "website",
   };
+
+  if (isWelcomeBack) {
+    // Shown in the Welcome Back flow's Slack alert.
+    properties.omnia_last_trained = (lastTrained as string).trim();
+  }
   if (notesTrimmed) {
     properties.omnia_life_notes = notesTrimmed;
   }
