@@ -2,8 +2,12 @@
 
 export const WELCOME_BACK_SOURCE = "welcome-back";
 
-/** Routed through the Membership auto-reply flow (SMS + email + Slack). */
-export const WELCOME_BACK_INTEREST = "Are you interested in Membership?";
+/**
+ * Set as omnia_interest on welcome-back leads. The Klaviyo flow
+ * "Auto-Reply: Welcome Back" filters on this exact value; it is not in the
+ * site's contact dropdown, so the other auto-reply flows never match it.
+ */
+export const WELCOME_BACK_INTEREST = "Coming back to Omnia";
 
 export const LAST_TRAINED_OPTIONS = [
   "Less than 6 months ago",

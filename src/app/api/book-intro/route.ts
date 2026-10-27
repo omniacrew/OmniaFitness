@@ -5,6 +5,7 @@ import {
 } from "@/lib/klaviyo-book-intro";
 import { isValidContactInterest } from "@/lib/contact-interest-options";
 import {
+  WELCOME_BACK_INTEREST,
   WELCOME_BACK_SOURCE,
   isValidLastTrained,
 } from "@/lib/welcome-back-options";
@@ -90,7 +91,14 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!isNonEmptyString(interest) || !isValidContactInterest(interest.trim())) {
+  // Welcome-back leads always route to the "Coming back to Omnia" flow,
+  // whatever the client sent.
+  const interestValue = isWelcomeBack
+    ? WELCOME_BACK_INTEREST
+    : isNonEmptyString(interest)
+      ? interest.trim()
+      : "";
+  if (!isWelcomeBack && !isValidContactInterest(interestValue)) {
     return NextResponse.json(
       { ok: false, error: "Please choose what you are interested in." },
       { status: 400 },
@@ -127,18 +135,15 @@ export async function POST(request: Request) {
   }
 
   const properties: Record<string, string> = {
-    omnia_interest: interest.trim(),
+    omnia_interest: interestValue,
     omnia_source: isWelcomeBack ? WELCOME_BACK_SOURCE : "website",
   };
 
   if (isWelcomeBack) {
-    const lastTrainedTrimmed = (lastTrained as string).trim();
-    properties.omnia_last_trained = lastTrainedTrimmed;
-    // Prefix the note so the Slack alert (which shows omnia_life_notes)
-    // makes it obvious this is a returning lead.
-    const tag = `[Welcome back · last trained: ${lastTrainedTrimmed}]`;
-    properties.omnia_life_notes = notesTrimmed ? `${tag} ${notesTrimmed}` : tag;
-  } else if (notesTrimmed) {
+    // Shown in the Welcome Back flow's Slack alert.
+    properties.omnia_last_trained = (lastTrained as string).trim();
+  }
+  if (notesTrimmed) {
     properties.omnia_life_notes = notesTrimmed;
   }
 

@@ -29,7 +29,7 @@ export default function WelcomeBackPage() {
             <p className="font-mono text-sm leading-relaxed text-black md:text-base">
               Whether it&apos;s been six months or six years, the door&apos;s
               open. No pressure, no pitch. Tell us a little about where
-              you&apos;re at and Jason will reach out personally.
+              you&apos;re at and Jason or MK will reach out to set up a time for you to come back in.
             </p>
             <p className="font-mono text-sm leading-relaxed text-black/70 md:text-base">
               Still in Denver. Still at 901 S. Jason Street. Show up. Be real.

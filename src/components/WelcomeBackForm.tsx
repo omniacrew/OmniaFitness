@@ -91,7 +91,7 @@ export default function WelcomeBackForm() {
           <Proximate>got it. talk soon.</Proximate>
         </h2>
         <p className="font-mono text-sm leading-relaxed text-black/75 md:text-base">
-          Jason will reach out personally. While you wait, grab some gear.
+          Jason or MK will reach out shortly to set up a time for you to come back in. While you wait, grab some gear.
         </p>
         <Link
           href="/shop"
