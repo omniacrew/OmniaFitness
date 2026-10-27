@@ -4,6 +4,10 @@ import {
   syncIntroLeadToKlaviyo,
 } from "@/lib/klaviyo-book-intro";
 import { isValidContactInterest } from "@/lib/contact-interest-options";
+import {
+  WELCOME_BACK_SOURCE,
+  isValidLastTrained,
+} from "@/lib/welcome-back-options";
 
 const MAX_LEN = 200;
 const NOTES_MAX = 2500;
@@ -40,10 +44,19 @@ export async function POST(request: Request) {
     );
   }
 
-  const { firstName, lastName, email, phone, interest, notes } = body as Record<
-    string,
-    unknown
-  >;
+  const { firstName, lastName, email, phone, interest, notes, source, lastTrained } =
+    body as Record<string, unknown>;
+
+  const isWelcomeBack = source === WELCOME_BACK_SOURCE;
+  if (
+    isWelcomeBack &&
+    (!isNonEmptyString(lastTrained) || !isValidLastTrained(lastTrained.trim()))
+  ) {
+    return NextResponse.json(
+      { ok: false, error: "Please tell us when you last trained with us." },
+      { status: 400 },
+    );
+  }
 
   if (!isNonEmptyString(firstName) || firstName.trim().length > MAX_LEN) {
     return NextResponse.json(
@@ -115,8 +128,17 @@ export async function POST(request: Request) {
 
   const properties: Record<string, string> = {
     omnia_interest: interest.trim(),
+    omnia_source: isWelcomeBack ? WELCOME_BACK_SOURCE : "website",
   };
-  if (notesTrimmed) {
+
+  if (isWelcomeBack) {
+    const lastTrainedTrimmed = (lastTrained as string).trim();
+    properties.omnia_last_trained = lastTrainedTrimmed;
+    // Prefix the note so the Slack alert (which shows omnia_life_notes)
+    // makes it obvious this is a returning lead.
+    const tag = `[Welcome back · last trained: ${lastTrainedTrimmed}]`;
+    properties.omnia_life_notes = notesTrimmed ? `${tag} ${notesTrimmed}` : tag;
+  } else if (notesTrimmed) {
     properties.omnia_life_notes = notesTrimmed;
   }
 
