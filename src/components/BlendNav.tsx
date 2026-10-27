@@ -22,9 +22,11 @@ export default function BlendNav() {
     : NEWSLETTER_LAYOUT.navTop.withoutBanner;
   const hideBookIntro = pathname.startsWith("/policies");
   const isBlog = pathname.startsWith("/blog");
-  // Shop pages are plain white, where the blended white links disappear — use solid black there.
-  const isShop = pathname.startsWith("/shop");
-  const linkColor = isShop ? "text-black" : "text-white";
+  // Shop and welcome-back pages are plain white, where the blended white links
+  // disappear — use solid black there.
+  const isPlainWhitePage =
+    pathname.startsWith("/shop") || pathname.startsWith("/welcome-back");
+  const linkColor = isPlainWhitePage ? "text-black" : "text-white";
 
   const handleAboutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname !== "/") return;
@@ -59,7 +61,7 @@ export default function BlendNav() {
         ) : (
           <div
             className="flex items-center gap-3"
-            style={isShop ? undefined : { mixBlendMode: "difference" }}
+            style={isPlainWhitePage ? undefined : { mixBlendMode: "difference" }}
           >
             <Link
               href="/#why-omnia"
@@ -108,25 +110,25 @@ export default function BlendNav() {
         ) : (
           <div
             className={`flex items-center gap-3 ${
-              isShop ? "!gap-2 rounded-lg bg-white/90 px-2 py-2 shadow-sm backdrop-blur" : ""
+              isPlainWhitePage ? "!gap-2 rounded-lg bg-white/90 px-2 py-2 shadow-sm backdrop-blur" : ""
             }`}
           >
             <Link
               href="/#why-omnia"
               onClick={handleAboutClick}
-              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
+              className={`${isPlainWhitePage ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[about]</Proximate>
             </Link>
             <Link
               href="/blog"
-              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
+              className={`${isPlainWhitePage ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[blog]</Proximate>
             </Link>
             <Link
               href="/shop"
-              className={`${isShop ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
+              className={`${isPlainWhitePage ? "" : "mix-blend-difference "}text-base font-mono tracking-wide ${linkColor} transition-opacity duration-300 hover:opacity-70`}
             >
               <Proximate>[shop]</Proximate>
             </Link>
