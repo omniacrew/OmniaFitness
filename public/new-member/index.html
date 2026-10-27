@@ -131,6 +131,12 @@
   .sched-row { grid-template-columns: 1fr auto !important; row-gap: 10px !important; }
   .sched-row > :nth-child(3) { grid-column: 1 / -1; min-width: 0; }
 }
+/* Align the hero's text with the 1080px content column used by every section below. */
+.hero {
+  padding-left: max(clamp(20px, 4vw, 48px), calc((100% - 1080px) / 2)) !important;
+  padding-right: max(clamp(20px, 4vw, 48px), calc((100% - 1080px) / 2)) !important;
+}
+.hero > div:last-child { max-width: 40rem !important; }
 :focus-visible { outline: 2px solid #fcccf2; outline-offset: 2px; }
 </style>
 </head>
@@ -138,7 +144,7 @@
 <!-- Unlisted new-member handbook. Not linked from site nav; noindex. Source: "Welcome to Omnia.dc.html" (New members handbook design). -->
 <div style="background: rgb(13, 13, 13); color: rgb(244, 242, 238); font-family: var(--font-mono); font-weight: 300; overflow-x: hidden;">
 
-  <section data-screen-label="Cover" style="position: relative; min-height: min(92vh, 880px); display: flex; flex-direction: column; justify-content: space-between; padding: clamp(20px, 4vw, 48px); overflow: hidden;">
+  <section class="hero" data-screen-label="Cover" style="position: relative; min-height: min(92vh, 880px); display: flex; flex-direction: column; justify-content: space-between; padding: clamp(20px, 4vw, 48px); overflow: hidden;">
     <img src="/new-member/photos/rig.jpg" alt="Members on the pull-up rig at Omnia" style="filter: none; position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: 36% 40%; z-index: 0;">
     <div style="position: absolute; inset: 0px; background: linear-gradient(rgba(13, 13, 13, 0.78) 0%, rgba(13, 13, 13, 0.42) 38%, rgba(13, 13, 13, 0.92) 100%); z-index: 1;"></div>
 
