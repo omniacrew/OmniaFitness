@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Welcome to Omnia — New member handbook</title>
+<meta name="description" content="Everything you need in your first month at Omnia Fitness Collective.">
+<link rel="icon" href="/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap">
+<link rel="preload" href="/new-member/fonts/Nougat-ExtraBlack.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+:root{
+--ink:#0d0d0d;
+--ink-soft:#1a1a1a;
+--concrete-900:#232323;
+--concrete-700:#4a4a4a;
+--concrete-500:#6f6f6f;
+--concrete-300:#a8a8a8;
+--concrete-100:#dcdcdc;
+--paper:#f4f2ee;
+--white:#ffffff;
+--pink:#fcccf2;
+--pink-deep:#e88fd6;
+--pink-dim:#f6e2f2;
+--danger:#c93b3b;
+
+--surface-page:var(--ink);
+--surface-page-light:var(--paper);
+--surface-card:var(--ink-soft);
+--surface-card-light:var(--white);
+--surface-raised:var(--concrete-900);
+--border-hairline:var(--concrete-700);
+--border-hairline-light:var(--concrete-300);
+
+--text-primary:var(--paper);
+--text-primary-onlight:var(--ink);
+--text-muted:var(--concrete-300);
+--text-muted-onlight:var(--concrete-700);
+--text-accent:var(--pink);
+
+--accent-primary:var(--pink);
+--accent-primary-strong:var(--pink-deep);
+--accent-on-accent:var(--ink);
+--status-danger:var(--danger);
+}
+
+@font-face{font-family:"GT Pressura Mono";src:url("/new-member/fonts/GT-Pressura-Mono-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:"GT Pressura Mono";src:url("/new-member/fonts/GT-Pressura-Mono-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:"GT Pressura Mono";src:url("/new-member/fonts/GT-Pressura-Mono-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:"Nougat ExtraBlack";src:url("/new-member/fonts/Nougat-ExtraBlack.ttf") format("truetype");font-weight:900;font-style:normal;font-display:swap;}
+
+:root{
+--font-mono:"GT Pressura Mono",ui-monospace,"SF Mono","Roboto Mono",monospace;
+--font-block:"Nougat ExtraBlack","Arial Black",system-ui,sans-serif;
+--font-display:var(--font-mono);
+--font-body:var(--font-mono);
+--font-impact:var(--font-block);
+
+--fs-display-xl:clamp(3.5rem,8vw,7.5rem); /* @kind other */
+--fs-display-lg:clamp(2.5rem,5vw,4.5rem); /* @kind other */
+--fs-display-md:clamp(1.75rem,3vw,2.75rem); /* @kind other */
+--fs-heading:1.375rem;
+--fs-body-lg:1.125rem;
+--fs-body:1rem;
+--fs-small:0.8125rem;
+--fs-micro:0.6875rem;
+
+--lh-tight:0.95; /* @kind other */
+--lh-snug:1.15; /* @kind other */
+--lh-normal:1.5; /* @kind other */
+
+--ls-tight:-0.01em; /* @kind other */
+--ls-normal:0em; /* @kind other */
+--ls-wide:0.08em; /* @kind other */
+--ls-wider:0.18em; /* @kind other */
+
+--fw-light:300; /* @kind other */
+--fw-regular:400; /* @kind other */
+--fw-bold:700; /* @kind other */
+--fw-black:900; /* @kind other */
+}
+
+:root{
+--space-1:4px;
+--space-2:8px;
+--space-3:12px;
+--space-4:16px;
+--space-5:24px;
+--space-6:32px;
+--space-7:48px;
+--space-8:64px;
+--space-9:96px;
+--space-10:128px;
+
+--radius-sm:2px;
+--radius-md:4px;
+--radius-pill:999px;
+--radius-none:0px;
+
+--border-w-hair:1px;
+--border-w-heavy:2px;
+
+--container-max:1280px;
+--gutter:var(--space-5);
+}
+
+:root{
+--ease-standard:cubic-bezier(.4,0,.2,1); /* @kind other */
+--ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+--duration-fast:120ms; /* @kind other */
+--duration-normal:200ms; /* @kind other */
+
+--grain-opacity:0.06; /* @kind other */
+--shadow-none:none;
+--shadow-hard:4px 4px 0 var(--ink);
+--shadow-card-light:0 1px 0 var(--border-hairline);
+}
+
+
+
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #0d0d0d; }
+  * { box-sizing: border-box; }
+  a { color: #fcccf2; text-decoration: none; }
+  a:hover { color: #ffffff; }
+  @font-face { font-family: "Raleway"; src: local("Raleway"); }
+
+@media (max-width: 640px) {
+  .sched-row { grid-template-columns: 1fr auto !important; row-gap: 10px !important; }
+  .sched-row > :nth-child(3) { grid-column: 1 / -1; min-width: 0; }
+}
+/* Align the hero's text with the 1080px content column used by every section below. */
+.hero {
+  padding-left: max(clamp(20px, 4vw, 48px), calc((100% - 1080px) / 2)) !important;
+  padding-right: max(clamp(20px, 4vw, 48px), calc((100% - 1080px) / 2)) !important;
+}
+.hero > div:last-child { max-width: 40rem !important; }
+:focus-visible { outline: 2px solid #fcccf2; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<!-- Unlisted new-member handbook. Not linked from site nav; noindex. Source: "Welcome to Omnia.dc.html" (New members handbook design). -->
+<div style="background: rgb(13, 13, 13); color: rgb(244, 242, 238); font-family: var(--font-mono); font-weight: 300; overflow-x: hidden;">
+
+  <section class="hero" data-screen-label="Cover" style="position: relative; min-height: min(92vh, 880px); display: flex; flex-direction: column; justify-content: space-between; padding: clamp(20px, 4vw, 48px); overflow: hidden;">
+    <img src="/new-member/photos/rig.jpg" alt="Members on the pull-up rig at Omnia" style="filter: none; position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: 36% 40%; z-index: 0;">
+    <div style="position: absolute; inset: 0px; background: linear-gradient(rgba(13, 13, 13, 0.78) 0%, rgba(13, 13, 13, 0.42) 38%, rgba(13, 13, 13, 0.92) 100%); z-index: 1;"></div>
+
+    <div style="position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap;">
+      <img loading="lazy" decoding="async" src="/new-member/img/omnia-logo-block-pink.png" alt="Omnia Fitness Collective" style="height: clamp(22px, 3vw, 34px); width: auto; display: block;">
+      <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(252, 204, 242); text-align: right; line-height: 1.8;">New member handbook<br><span style="color: rgb(168, 168, 168);">Denver, CO · Est. 2013</span></div>
+    </div>
+
+    <div style="position: relative; z-index: 2; max-width: 16em;">
+      <h1 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(2.75rem, 8.5vw, 6.5rem); line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; margin: 0px 0px clamp(20px, 3vw, 32px); color: rgb(244, 242, 238); text-wrap: balance;">Everyone starts somewhere.</h1>
+      <p style="font-family: var(--font-mono); font-weight: 400; font-size: clamp(0.95rem, 1.5vw, 1.2rem); line-height: 1.55; color: rgb(244, 242, 238); max-width: 34em; margin: 0px 0px clamp(20px, 3vw, 28px);">Everything you need in your first month: who we are, what to expect, when we train, and who to talk to.</p>
+      <div style="display: flex; gap: 10px; align-items: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(252, 204, 242);"><span style="width: 28px; height: 1px; background: rgb(252, 204, 242); display: block;"></span>Start here</div>
+    </div>
+  </section>
+
+  <section data-screen-label="Welcome" style="background: rgb(244, 242, 238); color: rgb(13, 13, 13); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <div class="sc-host-x" style="display: contents;"><div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 700; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--pink-deep);"><span style="width: 20px; height: 2px; background: currentcolor;"></span>01 — Welcome</div></div>
+        <div style="flex: 1 1 0%;"><div class="sc-host-x" style="display: contents;"><hr style="border-top: var(--border-w-hair) solid var(--border-hairline-light); border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-right-style: none; border-bottom-style: none; border-left-style: none; border-right-color: currentcolor; border-bottom-color: currentcolor; border-left-color: currentcolor; border-image: none; margin: 0px;"></div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(28px, 4vw, 56px); align-items: start;">
+        <div>
+          <h2 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 0.95; text-transform: uppercase; margin: 0px 0px 24px; color: rgb(13, 13, 13);">Welcome to Omnia</h2>
+          <p style="font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.6; color: rgb(35, 35, 35); margin: 0px 0px 20px; text-wrap: pretty;">Since 2013, Omnia has been a place where people become someone they didn't know was possible. We're a community that trains together and shows up for each other. Omnia isn't for everyone, but it could be everything for you.</p>
+          <p style="font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.6; color: rgb(35, 35, 35); margin: 0px; text-wrap: pretty;">We've built a gym where everyone belongs. Everyone starts somewhere, regardless of skill or fitness level, and everyone has room to grow. It's an honor to support you in that.</p>
+        </div>
+        <div style="background: rgb(13, 13, 13); padding: clamp(28px, 4vw, 44px); display: flex; align-items: center; min-height: clamp(200px, 26vw, 300px);">
+          <p style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: 1.02; text-transform: uppercase; margin: 0px; color: rgb(244, 242, 238);">Show up.<br>Be real.<br><span style="color: rgb(252, 204, 242);">Get strong.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="What to Expect" style="background: rgb(13, 13, 13); color: rgb(244, 242, 238); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <div class="sc-host-x" style="display: contents;"><div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 700; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--pink);"><span style="width: 20px; height: 2px; background: currentcolor;"></span>02 — What to expect</div></div>
+        <div style="flex: 1 1 0%;"><div class="sc-host-x" style="display: contents;"><hr style="border-top: var(--border-w-hair) solid var(--border-hairline); border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-right-style: none; border-bottom-style: none; border-left-style: none; border-right-color: currentcolor; border-bottom-color: currentcolor; border-left-color: currentcolor; border-image: none; margin: 0px;"></div></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(28px, 4vw, 48px); align-items: start; margin-bottom: clamp(36px, 5vw, 64px);">
+        <div>
+          <img loading="lazy" decoding="async" src="/new-member/photos/roller.jpg" alt="Member pressing overhead" style="filter: none; width: 100%; height: clamp(400px, 54vw, 660px); object-fit: cover; object-position: 50% 100%; display: block;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: clamp(28px, 3.5vw, 40px);">
+          <div>
+            <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.5rem, 2.8vw, 2.1rem); line-height: 1; text-transform: uppercase; margin: 0px 0px 16px; color: rgb(244, 242, 238);">Fitness</h3>
+            <p style="font-size: 1rem; line-height: 1.65; color: rgb(220, 220, 220); margin: 0px 0px 16px; text-wrap: pretty;">We lay the foundation with expert coaching and programming. You bring the effort, a good attitude, humility, and a willingness to be a great neighbor. You get out what you put in.</p>
+            <p style="font-size: 1rem; line-height: 1.65; color: rgb(220, 220, 220); margin: 0px; text-wrap: pretty;">This is a place where everyday people accomplish things they once thought were out of reach. Fitness should build confidence, resilience, and momentum that carries into every other part of life. Show up consistently, trust the process, and let us help you find out what you're capable of.</p>
+          </div>
+          <div style="height: 1px; background: rgb(74, 74, 74);"></div>
+          <div>
+            <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.5rem, 2.8vw, 2.1rem); line-height: 1; text-transform: uppercase; margin: 0px 0px 16px; color: rgb(244, 242, 238);">Culture</h3>
+            <p style="font-size: 1rem; line-height: 1.65; color: rgb(220, 220, 220); margin: 0px 0px 16px; text-wrap: pretty;">We take fitness and our community seriously — ourselves, not so much. You'll find hard work, encouragement, high-fives, and plenty of laughs. We push each other to improve while keeping a room where everyone, from complete beginners to experienced athletes, feels welcomed, respected, and supported.</p>
+            <p style="font-size: 1rem; line-height: 1.65; color: rgb(252, 204, 242); margin: 0px;">Progress over perfection, 100% of the time. First day or tenth year, you'll be surrounded by people who want you to succeed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(28px, 4vw, 48px); align-items: center;">
+        <div>
+          <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.5rem, 2.8vw, 2.1rem); line-height: 1; text-transform: uppercase; margin: 0px 0px 16px; color: rgb(244, 242, 238);">Community</h3>
+          <p style="font-size: 1rem; line-height: 1.65; color: rgb(220, 220, 220); margin: 0px 0px 16px; text-wrap: pretty;">You're not just joining a gym. You're joining a community. Fitness is more fun, more meaningful, and more sustainable when you do it alongside people who know your name. Whatever season of life you're in, you'll have people beside you.</p>
+          <p style="font-size: 1rem; line-height: 1.65; color: rgb(220, 220, 220); margin: 0px; text-wrap: pretty;">Great coaching and smart programming matter, but it's the people who make this place what it is. Members become friends, coaches become mentors, and Omnia starts to feel like a second home.</p>
+        </div>
+        <div>
+          <img loading="lazy" decoding="async" src="/new-member/photos/community.jpg" alt="The Omnia community outside the gym" style="filter: none; width: 100%; height: auto; display: block;">
+        </div>
+      </div>
+      <div style="margin-top: clamp(40px, 6vw, 72px); border: 1px solid rgb(74, 74, 74); padding: clamp(24px, 3.5vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(24px, 4vw, 48px);">
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(252, 204, 242); margin-bottom: 14px;">Community events</div>
+          <p style="font-size: 1rem; line-height: 1.65; color: rgb(220, 220, 220); margin: 0px; text-wrap: pretty;">Regularly check the whiteboard in the gym, Instagram, and your email for upcoming community events.</p>
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1; text-transform: uppercase; margin: 0px 0px 8px; color: rgb(244, 242, 238);">Men's Group</h3>
+          <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(168, 168, 168); margin-bottom: 12px;">Every other Thursday</div>
+          <p style="font-size: 1rem; line-height: 1.65; color: rgb(220, 220, 220); margin: 0px 0px 18px; text-wrap: pretty;">A space to talk about life, goals, and other things. Reach out to Coach Dan or Jason.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 0.95rem;">
+            <a href="mailto:jason@omniafitco.com" style="color: rgb(252, 204, 242); text-decoration: underline; text-underline-offset: 3px;">jason@omniafitco.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Class Schedule" style="background: rgb(244, 242, 238); color: rgb(13, 13, 13); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <div class="sc-host-x" style="display: contents;"><div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 700; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--pink-deep);"><span style="width: 20px; height: 2px; background: currentcolor;"></span>03 — Class schedule</div></div>
+        <div style="flex: 1 1 0%;"><div class="sc-host-x" style="display: contents;"><hr style="border-top: var(--border-w-hair) solid var(--border-hairline-light); border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-right-style: none; border-bottom-style: none; border-left-style: none; border-right-color: currentcolor; border-bottom-color: currentcolor; border-left-color: currentcolor; border-image: none; margin: 0px;"></div></div>
+      </div>
+      <h2 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 0.95; text-transform: uppercase; margin: 0px 0px clamp(28px, 4vw, 40px);">When we train</h2>
+
+      <div style="border-top: 1px solid rgb(13, 13, 13);">
+        <div class="sched-row" style="display: grid; grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr) minmax(200px, 2.4fr); gap: clamp(12px, 2vw, 28px); padding: clamp(18px, 2.4vw, 26px) 0px; border-bottom: 1px solid rgb(168, 168, 168); align-items: start;">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1; text-transform: uppercase;">CrossFit</div>
+          <div style="font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(74, 74, 74); padding-top: 4px;">Mon–Fri</div>
+          <div style="font-size: clamp(0.95rem, 1.2vw, 1.05rem); line-height: 1.7; color: rgb(35, 35, 35);">Mon–Fri 5:15am · 6:15am · 7:15am · 9:00am · 12:00pm · 4:00pm · 5:00pm · 6:00pm</div>
+        </div>
+        <div class="sched-row" style="display: grid; grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr) minmax(200px, 2.4fr); gap: clamp(12px, 2vw, 28px); padding: clamp(18px, 2.4vw, 26px) 0px; border-bottom: 1px solid rgb(168, 168, 168); align-items: start;">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1; text-transform: uppercase;">HYROX</div>
+          <div style="font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(74, 74, 74); padding-top: 4px;">Tue · Thu · Sat</div>
+          <div style="font-size: clamp(0.95rem, 1.2vw, 1.05rem); line-height: 1.7; color: rgb(35, 35, 35);">Tuesday 6:00pm · Thursday 7:15am · Saturday 10:00am</div>
+        </div>
+        <div class="sched-row" style="display: grid; grid-template-columns: minmax(120px, 1fr) minmax(120px, 1fr) minmax(200px, 2.4fr); gap: clamp(12px, 2vw, 28px); padding: clamp(18px, 2.4vw, 26px) 0px; border-bottom: 1px solid rgb(13, 13, 13); align-items: start;">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1; text-transform: uppercase;">Open Gym</div>
+          <div style="font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(74, 74, 74); padding-top: 4px;">Mon–Fri</div>
+          <div style="font-size: clamp(0.95rem, 1.2vw, 1.05rem); line-height: 1.7; color: rgb(35, 35, 35);">Mon–Thu 5:15am–10:00am · 12:00pm–7:00pm<br>Friday 5:15am–10:00am · 12:00pm–6:00pm</div>
+        </div>
+      </div>
+
+      <div style="margin-top: clamp(28px, 4vw, 40px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: clamp(20px, 3vw, 40px); align-items: center;">
+        <p style="font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.6; color: rgb(35, 35, 35); margin: 0px;">Reserve your spot in <strong style="font-weight: 700;">Wodify</strong>. Classes fill up, so book ahead when you can. Directions for download in your member contract email!</p>
+        
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <div class="sc-host-x" style="display: contents;"><a href="https://apps.apple.com/us/search?term=wodify" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-weight: 700; letter-spacing: var(--ls-wide); text-transform: uppercase; border-color: var(--ink); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: var(--radius-none); cursor: pointer; transition: transform var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); opacity: 1; padding: var(--space-2) var(--space-4); font-size: var(--fs-small); background: var(--ink); color: var(--paper);">Wodify — App Store</a></div>
+            <div class="sc-host-x" style="display: contents;"><a href="https://play.google.com/store/search?q=wodify&amp;c=apps" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-weight: 700; letter-spacing: var(--ls-wide); text-transform: uppercase; border-color: var(--ink); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: var(--radius-none); cursor: pointer; transition: transform var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); opacity: 1; padding: var(--space-2) var(--space-4); font-size: var(--fs-small); background: transparent; color: var(--ink);">Wodify — Google Play</a></div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Programming" style="background: rgb(13, 13, 13); color: rgb(244, 242, 238); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <div class="sc-host-x" style="display: contents;"><div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 700; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--pink);"><span style="width: 20px; height: 2px; background: currentcolor;"></span>04 — Programming</div></div>
+        <div style="flex: 1 1 0%;"><div class="sc-host-x" style="display: contents;"><hr style="border-top: var(--border-w-hair) solid var(--border-hairline); border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-right-style: none; border-bottom-style: none; border-left-style: none; border-right-color: currentcolor; border-bottom-color: currentcolor; border-left-color: currentcolor; border-image: none; margin: 0px;"></div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(28px, 4vw, 56px); align-items: start;">
+        <div>
+          <h2 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 0.95; text-transform: uppercase; margin: 0px 0px 24px;">Built to make better athletes</h2>
+          <p style="font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.65; color: rgb(220, 220, 220); margin: 0px 0px 20px; text-wrap: pretty;">We follow <a href="https://www.mayhemnation.com/" target="_blank" rel="noopener" style="color: rgb(252, 204, 242); text-decoration: none; border-bottom: 1px solid rgb(252, 204, 242);">Mayhem Affiliate</a> programming. It isn't just about getting through today's workout — it's about building better athletes over time.</p>
+          <p style="font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.65; color: rgb(220, 220, 220); margin: 0px 0px clamp(28px, 4vw, 40px); text-wrap: pretty;">Backed by years of coaching experience, it combines purposeful strength work, intelligent conditioning, and progressive skill development. A sustainable approach that prepares you for the gym and for whatever you choose to chase next.</p>
+          <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(168, 168, 168); margin-bottom: 18px;">Three tracks</div>
+          <div style="display: flex; flex-direction: column; border-top: 1px solid rgb(74, 74, 74);">
+            <div style="display: flex; align-items: baseline; gap: 18px; padding: 16px 0px; border-bottom: 1px solid rgb(74, 74, 74);"><span style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(252, 204, 242); min-width: 2em;">01</span><span style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1; text-transform: uppercase;">CrossFit</span></div>
+            <div style="display: flex; align-items: baseline; gap: 18px; padding: 16px 0px; border-bottom: 1px solid rgb(74, 74, 74);"><span style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(252, 204, 242); min-width: 2em;">02</span><span style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1; text-transform: uppercase;">HYROX</span></div>
+            <div style="display: flex; align-items: baseline; gap: 18px; padding: 16px 0px; border-bottom: 1px solid rgb(74, 74, 74);"><span style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(252, 204, 242); min-width: 2em;">03</span><span style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1; text-transform: uppercase;">Bodybuilding</span></div>
+          </div>
+        </div>
+        <div>
+          <img loading="lazy" decoding="async" src="/new-member/photos/programming.jpg" alt="Class working through front squats on the Omnia floor" style="filter: none; width: 100%; height: clamp(380px, 50vw, 640px); object-fit: cover; object-position: 44% 38%; display: block;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Take It Up a Level" style="background: rgb(244, 242, 238); color: rgb(13, 13, 13); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <div class="sc-host-x" style="display: contents;"><div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 700; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--pink-deep);"><span style="width: 20px; height: 2px; background: currentcolor;"></span>05 — Coaching services</div></div>
+        <div style="flex: 1 1 0%;"><div class="sc-host-x" style="display: contents;"><hr style="border-top: var(--border-w-hair) solid var(--border-hairline-light); border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-right-style: none; border-bottom-style: none; border-left-style: none; border-right-color: currentcolor; border-bottom-color: currentcolor; border-left-color: currentcolor; border-image: none; margin: 0px;"></div></div>
+      </div>
+      <h2 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 0.95; text-transform: uppercase; margin: 0px 0px 20px; max-width: 22em;">Want to take things up a level?</h2>
+      <p style="font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.6; color: rgb(35, 35, 35); margin: 0px 0px clamp(32px, 4vw, 52px); max-width: 44em;">If you're chasing bigger goals, our coaches build personalized services that meet you exactly where you are.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 0px;">
+        <div class="sc-host-x" style="display: contents;"><div style="background: var(--white); color: var(--ink); border: var(--border-w-hair) solid var(--border-hairline-light); padding: var(--space-5); font-family: var(--font-mono);">
+          <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(74, 74, 74); margin-bottom: 14px;">01</div>
+          <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.02; text-transform: uppercase; margin: 0px 0px 14px;">Nutrition coaching</h3>
+          <p style="font-size: 0.95rem; line-height: 1.65; color: rgb(35, 35, 35); margin: 0px; text-wrap: pretty;">If you want to lose weight, build muscle, improve your energy, or fuel your performance, nutrition is one of the most powerful tools you have. We help you build sustainable habits that fit your life, whether you just want to feel healthier or you're prepping for your next competition.</p>
+        </div></div>
+        <div class="sc-host-x" style="display: contents;"><div style="background: var(--white); color: var(--ink); border: var(--border-w-hair) solid var(--border-hairline-light); padding: var(--space-5); font-family: var(--font-mono);">
+          <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(74, 74, 74); margin-bottom: 14px;">02</div>
+          <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.02; text-transform: uppercase; margin: 0px 0px 14px;">Individual programming</h3>
+          <p style="font-size: 0.95rem; line-height: 1.65; color: rgb(35, 35, 35); margin: 0px; text-wrap: pretty;">Got goals outside of class? Chasing your first strict pull-up, building strength, training for HYROX, prepping for a competition, or working around an injury? Individualized programming gives you a personal gameplan that complements your regular classes.</p>
+        </div></div>
+        <div class="sc-host-x" style="display: contents;"><div style="background: var(--white); color: var(--ink); border: var(--border-w-hair) solid var(--border-hairline-light); padding: var(--space-5); font-family: var(--font-mono);">
+          <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(74, 74, 74); margin-bottom: 14px;">03</div>
+          <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.02; text-transform: uppercase; margin: 0px 0px 14px;">Skill sessions</h3>
+          <p style="font-size: 0.95rem; line-height: 1.65; color: rgb(35, 35, 35); margin: 0px; text-wrap: pretty;">We'll help you get your first kipping pull-up, muscle-up, handstand push-up, or double-under, and sharpen your Olympic lifts and gymnastics. One-on-one sessions give you dedicated time to build confidence, clean up technique, and speed up your progress.</p>
+        </div></div>
+        <div class="sc-host-x" style="display: contents;"><div style="background: var(--white); color: var(--ink); border: var(--border-w-hair) solid var(--border-hairline-light); padding: var(--space-5); font-family: var(--font-mono);">
+          <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(74, 74, 74); margin-bottom: 14px;">04</div>
+          <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.02; text-transform: uppercase; margin: 0px 0px 14px;">Lifestyle &amp; accountability</h3>
+          <p style="font-size: 0.95rem; line-height: 1.65; color: rgb(35, 35, 35); margin: 0px; text-wrap: pretty;">Fitness is about far more than one hour in the gym. Sleep, stress, mindset, habits, and consistency all shape your health. If you want extra accountability and guidance, we're here for it. The biggest breakthroughs usually happen in the habits you build between workouts.</p>
+        </div></div>
+        <div class="sc-host-x" style="display: contents;"><div style="background: var(--white); color: var(--ink); border: var(--border-w-hair) solid var(--border-hairline-light); padding: var(--space-5); font-family: var(--font-mono);">
+          <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.14em; color: rgb(74, 74, 74); margin-bottom: 14px;">05</div>
+          <h3 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.02; text-transform: uppercase; margin: 0px 0px 14px;">Personal training</h3>
+          <p style="font-size: 0.95rem; line-height: 1.65; color: rgb(35, 35, 35); margin: 0px; text-wrap: pretty;">Not everyone is ready for group classes, and that's perfectly okay. Maybe you're brand new, coming back after time away, recovering from an injury, or you simply prefer one-on-one. Personal training is coaching tailored to your goals, abilities, and pace. For some it's a stepping stone into classes; for others it's the perfect long-term fit.</p>
+        </div></div>
+        <div class="sc-host-x" style="display: contents;"><div style="background: var(--ink-soft); color: var(--paper); border: var(--border-w-hair) solid var(--border-hairline); padding: var(--space-5); font-family: var(--font-mono);">
+          <div style="display: flex; flex-direction: column; justify-content: center; gap: 20px; height: 100%;">
+            <p style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.15rem, 1.9vw, 1.5rem); line-height: 1.05; text-transform: uppercase; margin: 0px; color: rgb(244, 242, 238);">Talk to Jason or MaryKay to get started.</p>
+            
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <div class="sc-host-x" style="display: contents;"><a href="mailto:jason@omniafitco.com" style="font-family: var(--font-mono); font-weight: 700; letter-spacing: var(--ls-wide); text-transform: uppercase; border-color: var(--pink); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: var(--radius-none); cursor: pointer; transition: transform var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); opacity: 1; padding: var(--space-2) var(--space-4); font-size: var(--fs-small); background: var(--pink); color: var(--ink);"><span style="flex: 1 1 0%; text-align: left;">Jason — Owner / Janitor</span></a></div>
+                <div class="sc-host-x" style="display: contents;"><a href="mailto:marykay@omniafitco.com" style="font-family: var(--font-mono); font-weight: 700; letter-spacing: var(--ls-wide); text-transform: uppercase; border-color: var(--pink); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: var(--radius-none); cursor: pointer; transition: transform var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); opacity: 1; padding: var(--space-2) var(--space-4); font-size: var(--fs-small); background: var(--pink); color: var(--ink);"><span style="flex: 1 1 0%; text-align: left;">MaryKay — Director of Operations</span></a></div>
+              </div>
+            
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Meet Your Coaches" style="background: rgb(13, 13, 13); color: rgb(244, 242, 238); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <div class="sc-host-x" style="display: contents;"><div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 700; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--pink);"><span style="width: 20px; height: 2px; background: currentcolor;"></span>06 — Coaches</div></div>
+        <div style="flex: 1 1 0%;"><div class="sc-host-x" style="display: contents;"><hr style="border-top: var(--border-w-hair) solid var(--border-hairline); border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-right-style: none; border-bottom-style: none; border-left-style: none; border-right-color: currentcolor; border-bottom-color: currentcolor; border-left-color: currentcolor; border-image: none; margin: 0px;"></div></div>
+      </div>
+      <h2 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 0.95; text-transform: uppercase; margin: 0px 0px 14px;">Meet your coaches</h2>
+      <p style="font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.6; color: rgb(220, 220, 220); margin: 0px 0px clamp(28px, 4vw, 44px);">Check out their bios on <a href="https://www.omniafitco.com/coaches" target="_blank" rel="noopener" style="color: rgb(252, 204, 242); text-decoration: underline; text-underline-offset: 3px;">omniafitco.com</a></p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); gap: clamp(16px, 2.4vw, 28px);">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/marykay.jpg" alt="Coach MaryKay" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">MaryKay</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/jason.jpg" alt="Coach Jason" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Jason</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/julia.jpg" alt="Coach Julia" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Julia</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/arturo.jpg" alt="Coach Arturo" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Arturo</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/dan.jpg" alt="Coach Dan" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Dan</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/jake.jpg" alt="Coach Jake" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Jake</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/kat.jpg" alt="Coach Kat" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Kat</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/victoria.jpg" alt="Coach Victoria" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Victoria</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/chris.jpg" alt="Coach Chris" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Chris</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/lexie.jpg" alt="Coach Lexie" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Lexie</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <img loading="lazy" decoding="async" src="/new-member/coaches/rachel.jpg" alt="Coach Rachel" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; display: block; background: rgb(252, 204, 242);">
+          <div style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1; text-transform: uppercase; color: rgb(244, 242, 238);">Rachel</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section data-screen-label="Power-Up Physical Therapy" style="background: rgb(223, 224, 225); color: rgb(56, 56, 59); font-family: Raleway,var(--font-mono); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <span style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(0, 127, 128);">07 — Omnia’s Preferred Physical Therapist</span>
+        <span style="flex: 1 1 0%; height: 1px; background: rgb(185, 186, 187); display: block;"></span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(28px, 4vw, 56px); align-items: start;">
+        <div>
+          <img loading="lazy" decoding="async" src="/new-member/img/power-up-lockup.png" alt="Power-Up Physical Therapy" style="width: min(100%, 280px); height: auto; display: block; margin: 0px 0px clamp(24px, 3vw, 32px);">
+          <h2 style="font-family: Raleway,var(--font-mono); font-weight: 300; font-size: clamp(1.6rem, 3.2vw, 2.4rem); line-height: 1.12; margin: 0px 0px 20px; color: rgb(56, 56, 59);">Injuries happen. We have someone for that.</h2>
+          <p style="font-weight: 400; font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.65; color: rgb(56, 56, 59); margin: 0px 0px 16px; text-wrap: pretty;">Sometimes it's a small tweak, sometimes it's more serious, and sometimes you're mid-recovery and need guidance. <a href="https://www.powerupphysio.com/" target="_blank" rel="noopener" style="color: rgb(0, 127, 128); text-decoration: none; border-bottom: 1px solid rgb(0, 127, 128);">Power-Up Physical Therapy</a> is our preferred physical therapy partner.</p>
+          <p style="font-weight: 400; font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.65; color: rgb(56, 56, 59); margin: 0px 0px 16px; text-wrap: pretty;">Dr. Gavin Ongsingco has been an Omnia member for over five years and understands the demands of an active lifestyle. He works closely with our coaches to build a plan that helps you recover, rebuild, and get back to what you love.</p>
+          <p style="font-weight: 400; font-size: clamp(1rem, 1.3vw, 1.1rem); line-height: 1.65; color: rgb(56, 56, 59); margin: 0px; text-wrap: pretty;">The goal isn't just getting you out of pain; it's bringing you back stronger and more confident.</p>
+        </div>
+
+        <div>
+          <div style="background: rgb(0, 127, 128); color: rgb(255, 255, 255); padding: clamp(24px, 3vw, 34px); margin-bottom: clamp(20px, 2.6vw, 28px);">
+            <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; color: rgb(255, 255, 255);">Omnia member perks</div>
+            <p style="font-family: Raleway,var(--font-mono); font-weight: 600; font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.25; margin: 0px; color: rgb(255, 255, 255);">$50 off your initial evaluation, plus 10% off treatment packages.</p>
+          </div>
+
+          <div style="border-top: 1px solid rgb(156, 157, 158);">
+            <div style="display: grid; grid-template-columns: minmax(80px, 0.6fr) minmax(140px, 1.8fr); gap: 16px; padding: 14px 0px; border-bottom: 1px solid rgb(198, 199, 200);"><span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(106, 106, 109); padding-top: 3px;">Provider</span><span style="font-size: 0.95rem; line-height: 1.5;"><a href="https://www.powerupphysio.com/team" target="_blank" rel="noopener" style="color: rgb(0, 127, 128); text-decoration: none; border-bottom: 1px solid rgb(0, 127, 128);">Dr. Gavin Ongsingco</a>, PT, DPT, OCS, CSCS, CF-L1 · Founder</span></div>
+            <div style="display: grid; grid-template-columns: minmax(80px, 0.6fr) minmax(140px, 1.8fr); gap: 16px; padding: 14px 0px; border-bottom: 1px solid rgb(198, 199, 200);"><span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(106, 106, 109); padding-top: 3px;">Phone</span><span style="font-size: 0.95rem; line-height: 1.5;"><a href="tel:+17206087546" style="color: rgb(56, 56, 59); text-decoration: none;">(720) 608-7546</a></span></div>
+            <div style="display: grid; grid-template-columns: minmax(80px, 0.6fr) minmax(140px, 1.8fr); gap: 16px; padding: 14px 0px; border-bottom: 1px solid rgb(198, 199, 200);"><span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(106, 106, 109); padding-top: 3px;">Email</span><span style="font-size: 0.95rem; line-height: 1.5; word-break: break-word;"><a href="mailto:info@powerupphysio.com" style="color: rgb(56, 56, 59); text-decoration: none;">info@powerupphysio.com</a></span></div>
+            <div style="display: grid; grid-template-columns: minmax(80px, 0.6fr) minmax(140px, 1.8fr); gap: 16px; padding: 14px 0px; border-bottom: 1px solid rgb(198, 199, 200);"><span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(106, 106, 109); padding-top: 3px;">Location</span><span style="font-size: 0.95rem; line-height: 1.5;">1780 S Bellaire St, Ste 155<br>Denver, CO 80222</span></div>
+            <div style="display: grid; grid-template-columns: minmax(80px, 0.6fr) minmax(140px, 1.8fr); gap: 16px; padding: 14px 0px; border-bottom: 1px solid rgb(156, 157, 158);"><span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(106, 106, 109); padding-top: 3px;">Instagram</span><span style="font-size: 0.95rem; line-height: 1.5;"><a href="https://www.instagram.com/powerupphysicaltherapy/" target="_blank" rel="noopener" style="color: rgb(0, 127, 128); text-decoration: none; border-bottom: 1px solid rgb(0, 127, 128);">@powerupphysicaltherapy</a></span></div>
+          </div>
+
+          
+            <div style="margin-top: clamp(20px, 2.6vw, 28px);">
+              <div class="sc-host-x" style="display: contents;"><a href="https://www.powerupphysio.com/contact-1" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-weight: 700; letter-spacing: var(--ls-wide); text-transform: uppercase; border-color: var(--ink); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: var(--radius-none); cursor: pointer; transition: transform var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); opacity: 1; padding: var(--space-2) var(--space-4); font-size: var(--fs-small); background: var(--ink); color: var(--paper);">Book with Power-Up</a></div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section data-screen-label="Gym Info &amp; Contacts" style="background: rgb(13, 13, 13); color: rgb(244, 242, 238); padding: clamp(48px, 8vw, 104px) clamp(20px, 4vw, 48px);">
+    <div style="max-width: 1080px; margin: 0px auto;">
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <div class="sc-host-x" style="display: contents;"><div style="display: flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--fs-small); font-weight: 700; letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--pink);"><span style="width: 20px; height: 2px; background: currentcolor;"></span>08 — Gym info</div></div>
+        <div style="flex: 1 1 0%;"><div class="sc-host-x" style="display: contents;"><hr style="border-top: var(--border-w-hair) solid var(--border-hairline); border-right-width: medium; border-bottom-width: medium; border-left-width: medium; border-right-style: none; border-bottom-style: none; border-left-style: none; border-right-color: currentcolor; border-bottom-color: currentcolor; border-left-color: currentcolor; border-image: none; margin: 0px;"></div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(28px, 4vw, 56px); align-items: start;">
+        <div>
+          <h2 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 0.95; text-transform: uppercase; margin: 0px 0px clamp(24px, 3vw, 36px);">Find us</h2>
+          <div style="border-top: 1px solid rgb(74, 74, 74);">
+            <div style="display: grid; grid-template-columns: minmax(76px, 0.55fr) minmax(140px, 1.9fr); gap: 16px; padding: 15px 0px; border-bottom: 1px solid rgb(35, 35, 35);"><span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(168, 168, 168); padding-top: 3px;">Address</span><span style="font-size: 1rem; line-height: 1.5;">901 S Jason St, Suite C<br>Denver, CO 80223</span></div>
+            <div style="display: grid; grid-template-columns: minmax(76px, 0.55fr) minmax(140px, 1.9fr); gap: 16px; padding: 15px 0px; border-bottom: 1px solid rgb(35, 35, 35);"><span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(168, 168, 168); padding-top: 3px;">Phone</span><span style="font-size: 1rem; line-height: 1.5;"><a href="tel:+17203355611" style="color: rgb(244, 242, 238); text-decoration: none;">(720) 335-5611</a></span></div>
+            <div style="display: grid; grid-template-columns: minmax(76px, 0.55fr) minmax(140px, 1.9fr); gap: 16px; padding: 15px 0px; border-bottom: 1px solid rgb(35, 35, 35);"><span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(168, 168, 168); padding-top: 3px;">Email</span><span style="font-size: 1rem; line-height: 1.5; word-break: break-word;"><a href="mailto:info@omniafitco.com" style="color: rgb(244, 242, 238); text-decoration: none;">info@omniafitco.com</a></span></div>
+            <div style="display: grid; grid-template-columns: minmax(76px, 0.55fr) minmax(140px, 1.9fr); gap: 16px; padding: 15px 0px; border-bottom: 1px solid rgb(35, 35, 35);"><span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(168, 168, 168); padding-top: 3px;">Website</span><span style="font-size: 1rem; line-height: 1.5;"><a href="https://www.omniafitco.com/" target="_blank" rel="noopener" style="color: rgb(252, 204, 242); text-decoration: none; border-bottom: 1px solid rgb(252, 204, 242);">omniafitco.com</a></span></div>
+            <div style="display: grid; grid-template-columns: minmax(76px, 0.55fr) minmax(140px, 1.9fr); gap: 16px; padding: 15px 0px; border-bottom: 1px solid rgb(35, 35, 35);"><span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(168, 168, 168); padding-top: 3px;">Instagram</span><span style="font-size: 1rem; line-height: 1.5;"><a href="https://www.instagram.com/omniafitco/" target="_blank" rel="noopener" style="color: rgb(252, 204, 242); text-decoration: none; border-bottom: 1px solid rgb(252, 204, 242);">@omniafitco</a></span></div>
+            <div style="display: grid; grid-template-columns: minmax(76px, 0.55fr) minmax(140px, 1.9fr); gap: 16px; padding: 15px 0px; border-bottom: 1px solid rgb(74, 74, 74);"><span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(168, 168, 168); padding-top: 3px;">App</span><span style="font-size: 1rem; line-height: 1.5;">Wodify — book classes, track workouts, manage your membership</span></div>
+          </div>
+          
+            <div style="margin-top: clamp(20px, 2.6vw, 28px);">
+              <div class="sc-host-x" style="display: contents;"><a href="sms:+17203355611" style="font-family: var(--font-mono); font-weight: 700; letter-spacing: var(--ls-wide); text-transform: uppercase; border-color: var(--pink); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: var(--radius-none); cursor: pointer; transition: transform var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); opacity: 1; padding: var(--space-2) var(--space-4); font-size: var(--fs-small); background: var(--pink); color: var(--ink);">Text the gym</a></div>
+            </div>
+          
+        </div>
+
+        <div>
+          <h2 style="font-family: var(--font-block); font-weight: 900; font-size: clamp(1.9rem, 4vw, 3.1rem); line-height: 0.95; text-transform: uppercase; margin: 0px 0px clamp(24px, 3vw, 36px);">Your first week</h2>
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <div style="display: flex; gap: 16px; align-items: flex-start; background: rgb(26, 26, 26); padding: 18px 20px;"><span style="width: 16px; height: 16px; border: 1px solid rgb(168, 168, 168); flex: 0 0 auto; margin-top: 3px; display: block;"></span><span style="font-size: 1rem; line-height: 1.5; color: rgb(244, 242, 238);">Download Wodify and log in</span></div>
+            <div style="display: flex; gap: 16px; align-items: flex-start; background: rgb(26, 26, 26); padding: 18px 20px;"><span style="width: 16px; height: 16px; border: 1px solid rgb(168, 168, 168); flex: 0 0 auto; margin-top: 3px; display: block;"></span><span style="font-size: 1rem; line-height: 1.5; color: rgb(244, 242, 238);">Book your first class</span></div>
+            <div style="display: flex; gap: 16px; align-items: flex-start; background: rgb(26, 26, 26); padding: 18px 20px;"><span style="width: 16px; height: 16px; border: 1px solid rgb(168, 168, 168); flex: 0 0 auto; margin-top: 3px; display: block;"></span><span style="font-size: 1rem; line-height: 1.5; color: rgb(244, 242, 238);">Introduce yourself to your coach before class starts</span></div>
+            <div style="display: flex; gap: 16px; align-items: flex-start; background: rgb(26, 26, 26); padding: 18px 20px;"><span style="width: 16px; height: 16px; border: 1px solid rgb(168, 168, 168); flex: 0 0 auto; margin-top: 3px; display: block;"></span><span style="font-size: 1rem; line-height: 1.5; color: rgb(244, 242, 238);">Tell us about any injuries or limitations so we can scale for you</span></div>
+            <div style="display: flex; gap: 16px; align-items: flex-start; background: rgb(26, 26, 26); padding: 18px 20px;"><span style="width: 16px; height: 16px; border: 1px solid rgb(168, 168, 168); flex: 0 0 auto; margin-top: 3px; display: block;"></span><span style="font-size: 1rem; line-height: 1.5; color: rgb(244, 242, 238);">Join the Omnia member community channels</span></div>
+            <div style="display: flex; gap: 16px; align-items: flex-start; background: rgb(26, 26, 26); padding: 18px 20px;"><span style="width: 16px; height: 16px; border: 1px solid rgb(168, 168, 168); flex: 0 0 auto; margin-top: 3px; display: block;"></span><span style="font-size: 1rem; line-height: 1.5; color: rgb(244, 242, 238);">Ask a coach about goal-setting once you've got a few classes in</span></div>
+          </div>
+          <img loading="lazy" decoding="async" src="/new-member/photos/socks.jpg" alt="Omnia socks on the shop shelf" style="filter: none; width: 100%; height: clamp(160px, 18vw, 220px); object-fit: cover; object-position: 22% 50%; display: block; margin-top: clamp(20px, 2.6vw, 28px);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Closing" style="background: rgb(252, 204, 242); color: rgb(13, 13, 13); padding: clamp(56px, 10vw, 128px) clamp(20px, 4vw, 48px); text-align: center;">
+    <div style="max-width: 900px; margin: 0px auto; display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 3vw, 36px);">
+      <p style="font-family: var(--font-block); font-weight: 900; font-size: clamp(2.1rem, 6vw, 4.5rem); line-height: 0.95; text-transform: uppercase; margin: 0px; text-wrap: balance;">We're so glad you're here.</p>
+      <div style="font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgb(13, 13, 13);">Show up. Be real. Get strong.</div>
+      <img loading="lazy" decoding="async" src="/new-member/img/omnia-metal-ink.png" alt="Omnia" style="width: min(100%, 420px); height: auto; display: block;">
+    </div>
+  </section>
+</body>
+</html>
