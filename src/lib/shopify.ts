@@ -11,6 +11,10 @@ export const REVALIDATE_SECONDS = 300; // refresh product data every 5 minutes
 // products, newest-edited first, if the collection is missing or empty.
 const BANNER_COLLECTION =
   process.env.SHOPIFY_BANNER_COLLECTION || "homepage-banner";
+// Collection for the /shop grid. Lets the shop list things (like programs)
+// that stay out of the homepage banner. Falls back to the banner collection.
+export const SHOP_COLLECTION =
+  process.env.SHOPIFY_SHOP_COLLECTION || "shop-page";
 
 export const SHOP_URL = `https://${STORE_DOMAIN}`;
 
@@ -91,8 +95,13 @@ const LIST_QUERY = /* GraphQL */ `
     featuredImage { url altText }
     priceRange { minVariantPrice { amount currencyCode } }
   }
-  query ShopBanner($first: Int!, $handle: String!) {
+  query ShopBanner($first: Int!, $handle: String!, $fallback: String!) {
     collection(handle: $handle) {
+      products(first: $first, sortKey: COLLECTION_DEFAULT) {
+        nodes { ...BannerProduct }
+      }
+    }
+    fallback: collection(handle: $fallback) {
       products(first: $first, sortKey: COLLECTION_DEFAULT) {
         nodes { ...BannerProduct }
       }
@@ -118,14 +127,23 @@ type RawListProduct = {
  * Never throws: on a missing token or any Shopify error it returns [],
  * so pages still render (the shop banner simply hides).
  */
-export async function getShopProducts(first = 20): Promise<ShopProduct[]> {
+export async function getShopProducts(
+  first = 20,
+  handle: string = BANNER_COLLECTION
+): Promise<ShopProduct[]> {
   try {
     const data = await storefront<{
       collection: { products: { nodes: RawListProduct[] } } | null;
+      fallback: { products: { nodes: RawListProduct[] } } | null;
       products: { nodes: RawListProduct[] };
-    }>(LIST_QUERY, { variables: { first, handle: BANNER_COLLECTION } });
+    }>(LIST_QUERY, { variables: { first, handle, fallback: BANNER_COLLECTION } });
     const fromCollection = data.collection?.products?.nodes ?? [];
-    const nodes = fromCollection.length ? fromCollection : data.products.nodes;
+    const fromFallback = data.fallback?.products?.nodes ?? [];
+    const nodes = fromCollection.length
+      ? fromCollection
+      : fromFallback.length
+        ? fromFallback
+        : data.products.nodes;
     return nodes.map((p) => ({
       id: p.id,
       handle: p.handle,
@@ -169,6 +187,11 @@ export type ProductDetail = {
   description: string;
   availableForSale: boolean;
   images: { url: string; alt: string; width: number; height: number }[];
+  tags: string[];
+  /** True when any variant ships (merch). Programs and services don't. */
+  requiresShipping: boolean;
+  /** Product tagged "collect-phone": ask for a phone number before adding to cart. */
+  collectPhone: boolean;
   /** Options worth showing a picker for (hides Shopify's "Default Title"). */
   options: { name: string; values: string[] }[];
   variants: ProductVariant[];
@@ -181,6 +204,7 @@ const PRODUCT_QUERY = /* GraphQL */ `
       handle
       title
       productType
+      tags
       description
       descriptionHtml
       availableForSale
@@ -194,6 +218,7 @@ const PRODUCT_QUERY = /* GraphQL */ `
           price { amount currencyCode }
           selectedOptions { name value }
           image { url }
+          requiresShipping
         }
       }
     }
@@ -205,6 +230,7 @@ type RawProduct = {
   handle: string;
   title: string;
   productType: string;
+  tags: string[];
   description: string;
   descriptionHtml: string;
   availableForSale: boolean;
@@ -220,6 +246,7 @@ type RawProduct = {
       price: { amount: string; currencyCode: string };
       selectedOptions: { name: string; value: string }[];
       image: { url: string } | null;
+      requiresShipping: boolean;
     }[];
   };
 };
@@ -243,6 +270,9 @@ export async function getProduct(handle: string): Promise<ProductDetail | null> 
       description: p.description,
       descriptionHtml: p.descriptionHtml,
       availableForSale: p.availableForSale,
+      tags: p.tags,
+      requiresShipping: p.variants.nodes.some((v) => v.requiresShipping),
+      collectPhone: p.tags.some((t) => t.toLowerCase() === "collect-phone"),
       images: p.images.nodes.map((i) => ({
         url: i.url,
         alt: i.altText || p.title,

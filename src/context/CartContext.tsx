@@ -18,7 +18,11 @@ type CartContextType = {
   error: string | null;
   open: () => void;
   close: () => void;
-  addItem: (merchandiseId: string, quantity?: number) => Promise<boolean>;
+  addItem: (
+    merchandiseId: string,
+    quantity?: number,
+    attributes?: { key: string; value: string }[]
+  ) => Promise<boolean>;
   updateItem: (lineId: string, quantity: number) => Promise<void>;
 };
 
@@ -47,11 +51,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
     call("GET").then(setCart).catch(() => {});
   }, []);
 
-  const addItem = useCallback(async (merchandiseId: string, quantity = 1) => {
+  const addItem = useCallback(async (
+    merchandiseId: string,
+    quantity = 1,
+    attributes: { key: string; value: string }[] = []
+  ) => {
     setBusy(true);
     setError(null);
     try {
-      setCart(await call("POST", { merchandiseId, quantity }));
+      setCart(await call("POST", { merchandiseId, quantity, attributes }));
       setIsOpen(true);
       return true;
     } catch (e) {

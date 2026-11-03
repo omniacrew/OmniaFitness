@@ -6,6 +6,7 @@ import {
   getCart,
   updateLine,
   type Cart,
+  type LineAttribute,
 } from "@/lib/shopify-cart";
 
 export const dynamic = "force-dynamic";
@@ -47,19 +48,32 @@ export async function GET(req: NextRequest) {
   return respond(await currentCart(req));
 }
 
-/** POST /api/cart { merchandiseId, quantity } → add an item. */
+/** Keeps only short string key/value pairs (e.g. a phone number for a program sign-up). */
+function cleanAttributes(raw: unknown): LineAttribute[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .filter(
+      (a): a is LineAttribute =>
+        a && typeof a.key === "string" && typeof a.value === "string"
+    )
+    .slice(0, 5)
+    .map((a) => ({ key: a.key.slice(0, 40), value: a.value.slice(0, 200) }));
+}
+
+/** POST /api/cart { merchandiseId, quantity, attributes? } → add an item. */
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const merchandiseId = body?.merchandiseId;
   const quantity = Math.max(1, Math.min(20, Number(body?.quantity) || 1));
+  const attributes = cleanAttributes(body?.attributes);
   if (typeof merchandiseId !== "string" || !merchandiseId.startsWith("gid://shopify/ProductVariant/")) {
     return error("Missing product variant");
   }
   try {
     const existing = await currentCart(req);
     const cart = existing
-      ? await addLine(existing.id, merchandiseId, quantity)
-      : await createCart(merchandiseId, quantity);
+      ? await addLine(existing.id, merchandiseId, quantity, attributes)
+      : await createCart(merchandiseId, quantity, attributes);
     return respond(cart);
   } catch (e) {
     console.error("[cart] add failed", e);

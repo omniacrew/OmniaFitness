@@ -116,7 +116,13 @@ export async function getCart(cartId: string): Promise<Cart | null> {
   return data.cart ? normalize(data.cart) : null;
 }
 
-export async function createCart(merchandiseId: string, quantity: number): Promise<Cart> {
+export type LineAttribute = { key: string; value: string };
+
+export async function createCart(
+  merchandiseId: string,
+  quantity: number,
+  attributes: LineAttribute[] = []
+): Promise<Cart> {
   const data = await storefront<{
     cartCreate: { cart: RawCart | null; userErrors: UserError[] };
   }>(
@@ -127,7 +133,7 @@ export async function createCart(merchandiseId: string, quantity: number): Promi
         userErrors { field message }
       }
     }`,
-    { variables: { lines: [{ merchandiseId, quantity }] }, revalidate: false }
+    { variables: { lines: [{ merchandiseId, quantity, attributes }] }, revalidate: false }
   );
   check(data.cartCreate.userErrors);
   return normalize(data.cartCreate.cart!);
@@ -136,7 +142,8 @@ export async function createCart(merchandiseId: string, quantity: number): Promi
 export async function addLine(
   cartId: string,
   merchandiseId: string,
-  quantity: number
+  quantity: number,
+  attributes: LineAttribute[] = []
 ): Promise<Cart> {
   const data = await storefront<{
     cartLinesAdd: { cart: RawCart | null; userErrors: UserError[] };
@@ -148,7 +155,7 @@ export async function addLine(
         userErrors { field message }
       }
     }`,
-    { variables: { cartId, lines: [{ merchandiseId, quantity }] }, revalidate: false }
+    { variables: { cartId, lines: [{ merchandiseId, quantity, attributes }] }, revalidate: false }
   );
   check(data.cartLinesAdd.userErrors);
   return normalize(data.cartLinesAdd.cart!);
