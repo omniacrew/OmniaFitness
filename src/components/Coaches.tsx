@@ -54,6 +54,7 @@ const COACH_ORDER = [
   "chris",
   "lexie",
   "rachel",
+  "monique",
 ] as const;
 
 const COACHES_UNSORTED: Coach[] = [
@@ -165,6 +166,15 @@ With a background in Kinesiology and a Master's in Occupational Therapy, Rachel 
 She packed her car in 2021 with two days of Colorado experience under her belt, craving a new chapter. She wasn't planning on competing again - but she found Omnia and jumped into the mix.
 
 Nearly 11 years of coaching across Orangetheory, CrossFit, and her own outdoor self-run programs through Covid have shaped one core belief: your time here should be worth it. Rachel is a movement nerd who loves clean technique, purposeful progressions, and helping people surprise themselves. Outside the gym she runs R.Elery Coaching, co-founded TailoredHealth, and can be found on the beach volleyball court or borrowing everyone's dogs.`,
+  },
+  {
+    id: "monique",
+    name: "Monique",
+    imagePink: "/coaches/monique-pink.png",
+    imageNormal: "/coaches/monique.png",
+    bio: `I was born and raised in Denver, Colorado, and love all the classic Colorado things: skiing, camping, fishing, hanging in parks… all the good stuff (except hiking 14ers). My fiancé and I have two pups, Blueberry and Earl, and when we're not adventuring, we spend our free time cuddling them or hunting down dessert because I'm always down for something sweet.
+
+I've loved fitness and movement since I was a teeny-tiny kid, and today I'm grateful to be part of Omnia. The space and community keep me motivated and connected to that lifelong passion.`,
   },
 ];
 
