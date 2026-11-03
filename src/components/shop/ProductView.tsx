@@ -13,6 +13,9 @@ export default function ProductView({ product }: { product: ProductDetail }) {
   // multi-size products so nobody accidentally buys the wrong size.
   const [selected, setSelected] = useState<Record<string, string>>({});
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const [phone, setPhone] = useState("");
+  // Programs ask for a phone number up front (coaches reach out by text/WhatsApp).
+  const phoneOk = !product.collectPhone || phone.replace(/\D/g, "").length >= 10;
 
   const variant = useMemo(() => {
     if (singleVariant) return product.variants[0];
@@ -55,6 +58,7 @@ export default function ProductView({ product }: { product: ProductDetail }) {
   if (!product.availableForSale) buttonLabel = "[sold out]";
   else if (missing) buttonLabel = `[select a ${missing.name.toLowerCase()}]`;
   else if (!variant || !variant.availableForSale) buttonLabel = "[sold out]";
+  else if (!phoneOk) buttonLabel = "[add your phone number]";
   else canAdd = true;
   if (busy && canAdd) buttonLabel = "[adding…]";
 
@@ -111,9 +115,36 @@ export default function ProductView({ product }: { product: ProductDetail }) {
           </fieldset>
         ))}
 
+        {product.collectPhone && (
+          <label className="mb-6 block">
+            <span className="mb-2 block text-sm">phone number (required)</span>
+            <input
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="(303) 555-0123"
+              className="w-full rounded-lg border border-black/30 px-3 py-2 text-sm focus:border-black focus:outline-none"
+            />
+            <span className="mt-2 block text-xs text-black/50">
+              So your coaches can add you to the group and reach out before kickoff.
+            </span>
+          </label>
+        )}
+
         <button
           type="button"
-          onClick={() => canAdd && variant && addItem(variant.id)}
+          onClick={() =>
+            canAdd &&
+            variant &&
+            addItem(
+              variant.id,
+              1,
+              product.collectPhone ? [{ key: "Phone", value: phone.trim() }] : []
+            )
+          }
           disabled={!canAdd || busy}
           className={`mb-3 w-full rounded-lg border border-black py-3 text-sm tracking-wide transition-colors ${
             canAdd
@@ -125,7 +156,9 @@ export default function ProductView({ product }: { product: ProductDetail }) {
         </button>
         {error && <p className="mb-3 text-xs text-red-600">{error}</p>}
         <p className="mb-10 text-xs text-black/50">
-          Shipping and taxes calculated at checkout.
+          {product.requiresShipping
+            ? "Shipping and taxes calculated at checkout."
+            : "No shipping needed."}
         </p>
 
         {product.descriptionHtml && (

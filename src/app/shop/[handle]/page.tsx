@@ -6,14 +6,14 @@ import BlendLogo from "@/components/BlendLogo";
 import BlendNav from "@/components/BlendNav";
 import Footer from "@/components/Footer";
 import ProductView from "@/components/shop/ProductView";
-import { getProduct, getShopProducts } from "@/lib/shopify";
+import { getProduct, getShopProducts, SHOP_COLLECTION } from "@/lib/shopify";
 
 export const revalidate = 300;
 
 type Props = { params: { handle: string } };
 
 export async function generateStaticParams() {
-  const products = await getShopProducts(50);
+  const products = await getShopProducts(50, SHOP_COLLECTION);
   return products.map((p) => ({ handle: p.handle }));
 }
 

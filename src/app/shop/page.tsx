@@ -6,18 +6,18 @@ import BlendLogo from "@/components/BlendLogo";
 import BlendNav from "@/components/BlendNav";
 import Footer from "@/components/Footer";
 import Proximate from "@/components/variable-proximity/Proximate";
-import { getShopProducts } from "@/lib/shopify";
+import { getShopProducts, SHOP_COLLECTION } from "@/lib/shopify";
 
 export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Omnia Fitness Collective merch — tees, hats, socks and more.",
+  description: "Omnia Fitness Collective merch and programs — tees, hats, socks and more.",
   alternates: { canonical: "/shop" },
 };
 
 export default async function ShopPage() {
-  const products = await getShopProducts(50);
+  const products = await getShopProducts(50, SHOP_COLLECTION);
 
   return (
     <>
